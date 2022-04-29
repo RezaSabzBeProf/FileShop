@@ -1,0 +1,27 @@
+﻿@using AspCore_Course.Models.DTOs
+@model LoginViewModel
+            <form method="post" action="#">
+                <div class="control-group">
+                    <label class="control-label hidden shown-ie8" for="inputEmail">نام کاربری</label>
+                    <div class="controls">
+                        <input type="text" class="input-block-level" asp-for="UserName" id="inputEmail" placeholder="Username">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label hidden shown-ie8" for="inputPassword">رمز عبور</label>
+                    <div class="controls">
+                        <input type="password" class="input-block-level" asp-for="Password" id="inputPassword" placeholder="Password">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            مرا به خاطر بسپار
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary input-block-level bold higher">
+                    ورود
+                </button>
+            </form>
