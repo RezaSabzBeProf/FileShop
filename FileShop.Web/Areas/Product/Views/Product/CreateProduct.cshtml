@@ -1,0 +1,45 @@
+﻿@using AspCore_Course.Models
+@model Product
+
+<form method="post" enctype="multipart/form-data">
+                <div class="control-group">
+                    <label class="control-label hidden shown-ie8" for="inputEmail">نام محصول</label>
+                    <div class="controls">
+                        <input type="text" class="input-block-level" asp-for="ProductName" id="inputEmail" placeholder="نام محصول">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label hidden shown-ie8" for="inputEmail">قیمت محصول</label>
+                    <div class="controls">
+                        <input type="text" class="input-block-level" asp-for="ProductPrice" id="inputEmail" placeholder="قیمت محصول">
+                    </div>
+                </div>
+                  <div class="control-group">
+                    <label class="control-label hidden shown-ie8" for="inputEmail">توضیحات محصول</label>
+                    <div class="controls">
+                        <textarea type="text" class="input-block-level" asp-for="Desc" id="inputEmail" placeholder="توضیحات محصول"></textarea>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label hidden shown-ie8" for="inputEmail">توضیحات محصول</label>
+                    <div class="controls">
+                       <select class="form-control" asp-for="GroupId" asp-items="@(ViewData["GroupList"] as SelectList)"></select>
+                    </div>
+                </div>
+                 <div class="control-group">
+                    <label class="control-label hidden shown-ie8" for="inputEmail">اپلود فایل محصول</label>
+                    <div class="controls">
+                        <input type="file" class="input-block-level" name="productFile">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label hidden shown-ie8" for="inputEmail">اپلود کاور محصول</label>
+                    <div class="controls">
+                        <input type="file" class="input-block-level" name="productImage">
+                    </div>
+                </div>
+               
+                <button type="submit" class="btn btn-primary input-block-level bold higher">
+                    ساخت محصول
+                </button>
+            </form>

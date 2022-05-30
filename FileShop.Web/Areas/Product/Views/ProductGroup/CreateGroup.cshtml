@@ -1,0 +1,16 @@
+﻿@using AspCore_Course.Models
+@model ProductGroup
+
+<form method="post" asp-action="CreateGroup">
+                <div class="control-group">
+                    <label class="control-label hidden shown-ie8" for="inputEmail">نام گروه</label>
+                    <div class="controls">
+                        <input type="text" class="input-block-level" asp-for="GroupName" id="inputEmail" placeholder="Username">
+                    </div>
+                </div>
+                
+               
+                <button type="submit" class="btn btn-primary input-block-level bold higher">
+                    ساخت گروه
+                </button>
+            </form>

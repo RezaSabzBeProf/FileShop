@@ -17,11 +17,20 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\FileShop.Core\FileShop.Core.csproj" />
     <ProjectReference Include="..\FileShop.DataLayer\FileShop.DataLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Product\Models\" />
+    <Folder Include="Areas\Product\Views\Shared\" />
+    <Folder Include="wwwroot\Cover\" />
+    <Folder Include="wwwroot\ProductFile\" />
   </ItemGroup>
 
 </Project>

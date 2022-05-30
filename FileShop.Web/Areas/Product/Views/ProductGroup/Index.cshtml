@@ -1,0 +1,21 @@
+﻿@using AspCore_Course.Models
+@model List<ProductGroup>
+
+    @foreach(var item in Model)
+    {
+        <div class="container">
+ 
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Group Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>@item.GroupName</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+    }

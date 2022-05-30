@@ -1,4 +1,6 @@
-﻿using AspCore_Course.Models.DTOs;
+﻿using AspCore_Course;
+using AspCore_Course.Models;
+using AspCore_Course.Models.DTOs;
 using FileShop.Core.Service.Interface;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -45,14 +47,34 @@ namespace FileShop.Web.Controllers
                     ExpiresUtc = DateTime.UtcNow.AddMonths(1)
                 };
                 HttpContext.SignInAsync(principal, propertis);
+                return RedirectToAction("index");
+
             }
-            return RedirectToAction("index");
+            else
+            {
+                return View();
+            }
         }
         public IActionResult Logout()
         {
             HttpContext.SignOutAsync();
             return RedirectToAction("index");
 
+        }
+        public IActionResult SignIn()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult SignIn(User user)
+        {
+            user.CreateDate = DateTime.Now;
+            user.Role = UserRole.NormalUser;
+            string password = user.Password;
+            password = Password_helper.EncodePassword(password);
+            user.Password = password;
+            _userService.AddUser(user);
+            return Redirect("/home/Login");
         }
     }
 }

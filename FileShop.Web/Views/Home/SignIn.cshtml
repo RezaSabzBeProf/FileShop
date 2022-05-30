@@ -1,0 +1,21 @@
+﻿@using AspCore_Course.Models
+@model User
+            <form method="post" action="#">
+                <div class="control-group">
+                    <label class="control-label hidden shown-ie8" asp-for="UserName" for="inputUsernameRegister">نام کاربری</label>
+                    <div class="controls">
+                        <input type="text" class="input-block-level" asp-for="UserName" id="inputUsernameRegister" placeholder="Username">
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label hidden shown-ie8" asp-for="Password" for="inputPasswordRegister">رمز عبور</label>
+                    <div class="controls">
+                        <input type="password" class="input-block-level" asp-for="Password" id="inputPasswordRegister" placeholder="Password">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-danger input-block-level bold higher">
+                    ثبت نام
+                </button>
+            </form>
+         
