@@ -18,5 +18,13 @@ namespace FileShop.Core.Service.Interface
         List<SelectListItem> GetAllGroupForAddProduct();
 
         void AddProduct(Product product, IFormFile productFile, IFormFile productImage);
+
+        Product GetProductForShow(int id);
+
+        void AddToCard(int productId,string UserId);
+
+        Order GetUserOrder(string userName);
+
+        void IsFinalyTrue(Order order);
     }
 }

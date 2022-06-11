@@ -1,6 +1,7 @@
 ﻿using AspCore_Course.Models;
 using FileShop.Core.Service.Interface;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +46,56 @@ namespace FileShop.Core.Service
             _context.SaveChanges();
         }
 
+     
+        public void AddToCard(int productId, string UserId)
+        {
+            var product = _context.Products.Find(productId);
+            var user = _context.Users.Where(p=> p.UserName == UserId).SingleOrDefault();
+            var order = _context.Orders.Where(p => p.IsFinaly == false && p.UserId == user.Id).SingleOrDefault();
+            if(order == null)
+            {
+                _context.Orders.Add(new Order
+                {
+                    IsFinaly = false,
+                    OrderSum = product.ProductPrice,
+                    UserId = user.Id,
+                    CreateDate = DateTime.Now,
+                    OrderDetails = new List<OrderDetail>()
+                    {
+                        new OrderDetail
+                        {
+                            Price = product.ProductPrice,
+                            ProductId = product.Id
+                        }
+                    }
+                });
+
+            }
+            else
+            {
+                var details = _context.OrderDetails.Include(p=> p.Product).SingleOrDefault(p => p.OrderId == order.OrderId && p.ProductId == product.Id);
+                if(details != null)
+                {
+
+                }
+                else
+                {
+                    details = new OrderDetail()
+                    {
+                        Price = product.ProductPrice,
+                        ProductId = productId,
+                        OrderId = order.OrderId
+                    };
+                    order.OrderDetails = new List<OrderDetail>();
+                    order.OrderDetails.Add(details);
+                    order.OrderSum += product.ProductPrice;
+
+                }
+
+            }
+            _context.SaveChanges();
+        }
+
         public List<SelectListItem> GetAllGroupForAddProduct()
         {
             var model = _context.ProductGroups.Select(g=>
@@ -56,9 +107,33 @@ namespace FileShop.Core.Service
             return model;
         }
 
+        public Product GetProductForShow(int id)
+        {
+            return _context.Products.Find(id);
+        }
+
+        public Order GetUserOrder(string userName)
+        {
+            return _context.Orders.Include(o=> o.User).Include(o=> o.OrderDetails).ThenInclude(o=> o.Product).Where(u => u.User.UserName == userName && u.IsFinaly == false).SingleOrDefault();
+        }
+
         public List<ProductGroup> ListGroup()
         {
             return _context.ProductGroups.ToList();
+        }
+
+        public void IsFinalyTrue(Order order)
+        {
+            order.IsFinaly = true;
+            foreach(var item in order.OrderDetails)
+            {
+                _context.UserProducts.Add(new DataLayer.UserProduct
+                {
+                    ProductId = item.ProductId,
+                    UserId = order.UserId
+                });
+            }
+            _context.SaveChanges();
         }
     }
 }

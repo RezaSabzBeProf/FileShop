@@ -1,0 +1,35 @@
+﻿@using AspCore_Course.Models
+@model Order
+<table class="table table-items">
+							    <thead>
+							    	<tr>
+							    		<th colspan="2">آیتم</th>
+							    		<th><div class="align-right">قیمت</div></th>
+							    	</tr>
+							    </thead>
+							    <tbody>
+							         @foreach(var item in Model.OrderDetails)
+									 {
+										  <tr>
+							        	<td class="image"><img src="/Cover/@item.Product.ImageName" alt="" width="124" height="124"></td>
+							        	<td class="desc">@item.Product.ProductName<a title="Remove Item" class="icon-remove-sign" href="#"></a></td>
+							        	<td class="price">
+							        	    @item.Price
+							        	</td>
+							        </tr>
+									 }
+							      <tr>
+							        	<td class="stronger">جمع کل :</td>
+							        	<td class="stronger"><div class="size-16 align-right">@Model.OrderSum</div></td>
+							        </tr>
+									 <tr>
+							        	<td class="stronger">
+											<form asp-controller="File" asp-action="OnlinePayment" method="post">
+												<input type="hidden" name="orderId" value="@Model.OrderId"/>
+											<button type="submit" class="btn btn-success">پرداخت</button>
+											</form>
+											
+										</td>
+							        </tr>
+							    </tbody>
+							</table>
