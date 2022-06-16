@@ -161,5 +161,15 @@ namespace FileShop.Core.Service
         {
             return _context.Products.ToList();
         }
+
+        public Tuple<List<Product>, int> GetProductList(int pageId, int take = 6, string filter = "")
+        {
+            int skip = (pageId - 1) * take;
+            var model = _context.Products.Where(p => p.Desc.Contains(filter) || p.ProductName.Contains(filter)).ToList();
+            int pageCount = model.Count / take;
+            pageCount++;
+            model = model.Skip(skip).Take(take).ToList();
+            return Tuple.Create(model, pageCount);
+        }
     }
 }

@@ -16,9 +16,12 @@ namespace FileShop.Web.Controllers
         {
             _productService = productService;
         }
-        public IActionResult Index()
+        public IActionResult Index(int pageid = 1,string filter = "")
         {
-            return View();
+            var model = _productService.GetProductList(pageid, 2, filter);
+            ViewBag.pageCount = model.Item2;
+            ViewBag.Filter = filter;
+            return View(model.Item1);
         }
         public IActionResult ShowProduct(int id)
         {

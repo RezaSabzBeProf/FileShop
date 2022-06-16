@@ -34,5 +34,7 @@ namespace FileShop.Core.Service.Interface
         void CreateComment(Comment comment);
 
         List<Product> GetProductForIndex();
+
+        Tuple<List<Product>,int> GetProductList(int pageId, int take = 6, string filter = "");
     }
 }
