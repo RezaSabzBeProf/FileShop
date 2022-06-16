@@ -4,112 +4,77 @@
     ViewData["title"] = "نمایش محصول";
 }
 <div class="container">
-        <div class="push-up top-equal blocks-spacer">
-            
+    <div class="push-up top-equal blocks-spacer">
+
+        <!--  ==========  -->
+        <!--  = Product =  -->
+        <!--  ==========  -->
+        <div class="row blocks-spacer">
+
             <!--  ==========  -->
-            <!--  = Product =  -->
+            <!--  = Preview Images =  -->
             <!--  ==========  -->
-            <div class="row blocks-spacer">
-                
-                <!--  ==========  -->
-                <!--  = Preview Images =  -->
-                <!--  ==========  -->
-                
-                
-                <!--  ==========  -->
-                <!--  = Title and short desc =  -->
-                <!--  ==========  -->
-                <div class="span7">
-                    <div class="product-title">
-                        <h1 class="name"> @Model.ProductName</h1>
-                        <div class="meta">
-                            <span class="tag">@Model.ProductPrice تومان</span>
-                            <span class="stock">
-                                <a asp-controller="File" asp-action="AddToCard" asp-route-id="@Model.Id" class="btn btn-danger">افزودن به سبد خرید</a> 
-                            </span>
-                        </div>
-                    </div>
-                    <div class="product-description">
-                        <p>@Model.Desc</p>
-                        <hr>
-                        
-                        <!--  ==========  -->
-                        <!--  = Add to cart form =  -->
-                        <!--  ==========  -->
-                       
-                        
-                        <hr>
-                        
-                      @*  <!--  ==========  -->
-                        <!--  = Share buttons =  -->
-                        <!--  ==========  -->
-                        <div class="share-item">
-                            <div class="pull-right social-networks">
-                                <!-- AddThis Button BEGIN -->
-                                <div class="addthis_toolbox addthis_default_style ">
-                                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-                                <a class="addthis_button_tweet"></a>
-                                <a class="addthis_button_pinterest_pinit"></a>
-                                <a class="addthis_counter addthis_pill_style"></a>
-                                </div>
-                                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-517459541beb3977"></script>
-                                <!-- AddThis Button END -->
-                            </div>
-                            با دوستان خود به اشتراک بگذارید :
-                        </div>*@
-                        
+            <!--  ==========  -->
+            <!--  = Title and short desc =  -->
+            <!--  ==========  -->
+            <div class="span7">
+                <div class="product-title">
+                    <h1 class="name"> @Model.ProductName</h1>
+                    <div class="meta">
+                        <span class="tag">@Model.ProductPrice تومان</span>
+                        <span class="stock">
+                            <a asp-controller="File" asp-action="AddToCard" asp-route-id="@Model.Id" class="btn btn-danger">افزودن به سبد خرید</a>
+                        </span>
                     </div>
                 </div>
-            </div>
-            
-           @* <!--  ==========  -->
-            <!--  = Tabs with more info =  -->
-            <!--  ==========  -->
-            <div class="row">
-                <div class="span12">
-                    <ul id="myTab" class="nav nav-tabs">
-                        <li class="active">
-                            <a href="#tab-1" data-toggle="tab">جزئیات</a>
-                        </li>
-                        <li>
-                            <a href="#tab-2" data-toggle="tab">جدول اندازه</a>
-                        </li>
-                        <li>
-                            <a href="#tab-3" data-toggle="tab">نظرات</a>
-                        </li>
-                        <li>
-                            <a href="#tab-4" data-toggle="tab">جزئیات ارسال</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="fade in tab-pane active" id="tab-1">
-                            <h3>توضیحات محصول</h3>
-                            <p>لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد، آنچنان که لازم بود طراحی گرافیکی خوب بود. کتابهای زیادی شرایط سخت ، دشوار و کمی در سالهای دور لازم است. هدف از این نسخه فرهنگ پس از آن و دستاوردهای خوب شاید باشد. حروفچینی لازم در شرایط فعلی لازمه تکنولوژی بود که گذشته، حال و آینده را شامل گردد. سی و پنج درصد از طراحان در قرن پانزدهم میبایست پرینتر در ستون و سطر حروف لازم است، بلکه شناخت این ابزار گاه اساسا بدون هدف بود و سئوالهای زیادی در گذشته بوجود می آید، تنها لازمه آن بود. </p>
-                            <p>لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد، آنچنان که لازم بود طراحی گرافیکی خوب بود. کتابهای زیادی شرایط سخت ، دشوار و کمی در سالهای دور لازم است. هدف از این نسخه فرهنگ پس از آن و دستاوردهای خوب شاید باشد. حروفچینی لازم در شرایط فعلی لازمه تکنولوژی بود که گذشته، حال و آینده را شامل گردد. سی و پنج درصد از طراحان در قرن پانزدهم میبایست پرینتر در ستون و سطر حروف لازم است، بل</p>
-                            <h1>سرخط H1 30px</h1>
-                            <h2>سرخط H2 26px</h2>
-                            <h3>سرخط H3 20px</h3>
-                            <h4>سرخط H4 18px</h4>
-                            <h5>سرخط H5 15px</h5>
-                            <p>لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد، آنچنان که لازم بود طراحی گرافیکی خوب بود. کتابهای زیادی شرایط سخت ، دشوار و کمی در سالهای دور لازم است. </p>
-                        </div>
-                        <div class="fade tab-pane" id="tab-2">
-                            <p>
-                                لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد، آنچنان که لازم بود طراحی گرافیکی خوب بود. کتابهای زیادی شرایط سخت ، دشوار و کمی در سالهای دور لازم است. هدف از این نسخه فرهنگ پس از آن و دستاوردهای خوب شاید باشد. حروفچینی لازم در شرایط فعلی لازمه تکنولوژی بود که گذشته، حال و آینده را شامل گردد. سی و پنج درصد از طراحان در قرن پانزدهم میبایست پرینتر در ستون و سطر حروف لازم است، بلکه شناخت این ابزار گاه اساسا بدون هدف بود و سئوالهای زیادی در گذشته بوجود می آید، تنها لازمه آن بود.  
-                            </p>
-                        </div>
-                        <div class="fade tab-pane" id="tab-3">
-                            <p>
-                                لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد، آنچنان که لازم بود طراحی گرافیکی خوب بود. کتابهای زیادی شرایط سخت ، دشوار و کمی در سالهای دور لازم است. هدف از این نسخه فرهنگ پس از آن و دستاوردهای خوب شاید باشد. حروفچینی لازم در شرایط فعلی لازمه تکنولوژی بود که گذشته، حال و آینده را شامل گردد. سی و پنج درصد از طراحان در قرن پانزدهم میبایست پرینتر در ستون و سطر حروف لازم است، بلکه شناخت این ابزار گاه اساسا بدون هدف بود و سئوالهای زیادی در گذشته بوجود می آید، تنها لازمه آن بود.  
-                            </p>
-                        </div>
-                        <div class="fade tab-pane" id="tab-4">
-                            <p>
-                                لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد، آنچنان که لازم بود طراحی گرافیکی خوب بود. کتابهای زیادی شرایط سخت ، دشوار و کمی در سالهای دور لازم است. هدف از این نسخه فرهنگ پس از آن و دستاوردهای خوب شاید باشد. حروفچینی لازم در شرایط فعلی لازمه تکنولوژی بود که گذشته، حال و آینده را شامل گردد. سی و پنج درصد از طراحان در قرن پانزدهم میبایست پرینتر در ستون و سطر حروف لازم است، بلکه شناخت این ابزار گاه اساسا بدون هدف بود و سئوالهای زیادی در گذشته بوجود می آید، تنها لازمه آن بود...
-                            </p>
-                        </div>
+                <div class="product-description">
+                    <p>@Model.Desc</p>
+                    <hr>
+                    @if(User.Identity.IsAuthenticated)
+                    {
+                        <form asp-Controller="File" asp-action="CreateComment"
+                        data-ajax="true"
+                        data-ajax-method="post"
+                        data-ajax-mode="replace"
+                        data-ajax-update="#commentList"
+                        data-ajax-success="finish">
+                            <input type="hidden" name="comment.ProductId" value="@Model.Id"/>
+                            <div class="control-group">
+                    <div class="controls">
+                        <textarea type="text" id="commentTXT" name="comment.CommentText" class="input-block-level" placeholder="متن نظر"></textarea>
                     </div>
-                </div>*@
+                    <button type="submit" class="btn btn-success">ثبت نظر</button>
+                </div>
+                        </form>
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning">
+                            کاربر گرامی برای ثبت نظر خود باید وارد شوید
+                        </div>
+                    }
+                    <div id="commentList" name="commentList">
+
+                    </div>
+
+                </div>
             </div>
         </div>
+
+
     </div>
+</div>
+@section Scripts{
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script>
+        $(function ShowComment() {
+            $("#commentList").load("/file/ShowComment/" + @Model.Id);
+        });
+        function finish()
+        {
+            $("#commentTXT").val("");
+        }
+    </script>
+
+        }

@@ -26,5 +26,13 @@ namespace FileShop.Core.Service.Interface
         Order GetUserOrder(string userName);
 
         void IsFinalyTrue(Order order);
+        List<Product> UserProducts(string userName);
+        bool UserInProduct(string userName, int productId);
+
+        List<Comment> GetProductComment(int id);
+
+        void CreateComment(Comment comment);
+
+        List<Product> GetProductForIndex();
     }
 }

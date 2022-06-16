@@ -1,0 +1,25 @@
+﻿@model List<AspCore_Course.Models.Comment>
+@{
+	Layout = null;
+}
+    <table class="table table-items">
+							    <thead>
+							    	<tr>
+							    		<th colspan="2">نام</th>
+							    		<th><div class="align-right">نظر</div></th>
+							    	</tr>
+							    </thead>
+							    <tbody>
+							         @foreach(var item in Model)
+									 {
+										  <tr>
+							        	<td class="image"><img src="" alt="user_picture" width="124" height="124"></td>
+							        	<td class="desc">@item.User.UserName</td>
+							        <td class="desc">@item.CommentText</td>
+									</tr>
+									 }
+							      <tr>
+							        	
+							        </tr>
+							    </tbody>
+							</table>

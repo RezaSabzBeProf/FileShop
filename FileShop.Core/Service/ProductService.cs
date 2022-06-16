@@ -135,5 +135,31 @@ namespace FileShop.Core.Service
             }
             _context.SaveChanges();
         }
+
+        public List<Product> UserProducts(string userName)
+        {
+            return _context.Products.Include(u => u.User).Where(p => p.User.UserName == userName).ToList();
+        }
+
+        public bool UserInProduct(string userName, int productId)
+        {
+            return _context.UserProducts.Include(u => u.User).Any(u => u.User.UserName == userName && u.ProductId == productId);
+        }
+
+        public List<Comment> GetProductComment(int id)
+        {
+            return _context.Comments.Include(u=> u.User).Where(p => p.ProductId == id).ToList();
+        }
+
+        public void CreateComment(Comment comment)
+        {
+            _context.Add(comment);
+            _context.SaveChanges();
+        }
+
+        public List<Product> GetProductForIndex()
+        {
+            return _context.Products.ToList();
+        }
     }
 }

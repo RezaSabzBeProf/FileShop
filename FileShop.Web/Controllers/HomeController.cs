@@ -14,13 +14,16 @@ namespace FileShop.Web.Controllers
     public class HomeController : Controller
     {
         IUserService _userService;
-        public HomeController(IUserService userService)
+        IProductService _productService;
+        public HomeController(IUserService userService, IProductService productService)
         {
             _userService = userService;
+            _productService = productService;
         }
         public IActionResult Index()
         {
-            return View();
+            var model = _productService.GetProductForIndex();
+            return View(model);
         }
         public IActionResult Login()
         {

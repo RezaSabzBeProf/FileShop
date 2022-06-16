@@ -1,7 +1,9 @@
-﻿using Dto.Payment;
+﻿using AspCore_Course.Models;
+using Dto.Payment;
 using FileShop.Core.Service.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using ZarinPal;
 using ZarinPal.Class;
 
@@ -86,6 +88,35 @@ namespace FileShop.Web.Controllers
                 ViewBag.IsPay = false;
             }
             return View();
+        }
+        [Authorize]
+        public IActionResult ShowBuyProduct()
+        {
+            var model = _productService.UserProducts(User.Identity.Name);
+            return View(model);
+        }
+        [Authorize]
+        public IActionResult DownloadFile(int id)
+        {
+            if(_productService.UserInProduct(User.Identity.Name, id))
+            {
+                var product = _productService.GetProductForShow(id);
+                byte[] file = System.IO.File.ReadAllBytes($"wwwroot/ProductFile/{product.FileLink}");
+                return File(file, "application/force-download", product.FileLink);
+            }
+            return NotFound();
+        }
+        public IActionResult ShowComment(int id)
+        {
+            return View(_productService.GetProductComment(id));
+        }
+        [Authorize]
+        public IActionResult CreateComment(Comment comment)
+        {
+            comment.UserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            comment.CreateDate = DateTime.Now;
+            _productService.CreateComment(comment);
+            return View("ShowComment", _productService.GetProductComment(comment.ProductId));
         }
     }
 }

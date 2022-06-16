@@ -1,0 +1,23 @@
+﻿@using AspCore_Course.Models
+@model List<Product>
+<table class="table table-items">
+							    <thead>
+							    	<tr>
+							    		<th colspan="2">آیتم</th>
+							    		<th><div class="align-right">دانلود</div></th>
+							    	</tr>
+							    </thead>
+							    <tbody>
+							         @foreach(var item in Model)
+									 {
+										  <tr>
+							        	<td class="image"><img src="/Cover/@item.ImageName" alt="" width="124" height="124"></td>
+							        	<td class="desc">@item.ProductName<a title="Remove Item" class="icon-remove-sign" href="#"></a></td>
+							        <td class="desc"><a href="/file/DownloadFile/@item.Id">دانلود فایل</a></td>
+									</tr>
+									 }
+							      <tr>
+							        	
+							        </tr>
+							    </tbody>
+							</table>
